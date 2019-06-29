@@ -23,11 +23,27 @@ class App extends Component {
   }
 
     render(){
-      return (
-        <div className="App">
+      const {isLoaded, items} = this.state;
 
-      </div>
-    );
+      if(!isLoaded){
+        return <div>Loading...</div>
+      }
+
+        else{
+
+          return (
+            <div className="App">
+              {/* Data has been loaded. */}
+              <ul>
+                {items.map(item =>(
+                  <li key={item.id}>
+                    Name: {item.name} | Email: {item.email}
+                  </li>  
+                ))}
+              </ul>
+            </div>
+      );
+    }
   }
 }
 
